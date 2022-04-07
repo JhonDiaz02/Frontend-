@@ -13,6 +13,8 @@ export class ListCourseComponent implements OnInit {
   cursos?: any[];
 
   ngOnInit() {
-    this.cursos = this.apiService.Get("cursos");
+    this.apiService.Get("cursos").then(x => {
+      this.cursos = x;
+    });
   }
 }

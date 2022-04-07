@@ -11,10 +11,11 @@ export class ApiServiceService {
 
   constructor(private http: HttpClient) { }
 
-  Get(entity: string) {
-    this.http.get<any>(environment.end_point + entity).subscribe(data => {
-      this.data = data;
-    });
-    return this.data;
+  Get(entity: string): Promise<any> {
+    return this.http.get(`${environment.end_point}${entity}`)
+      .toPromise()
+      .then(x => {
+        return Promise.resolve(<any>x);
+      });
   }
 }
