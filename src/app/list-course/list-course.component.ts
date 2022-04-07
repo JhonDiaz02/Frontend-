@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormCursoComponent } from '../form-curso/form-curso.component';
 import { ApiServiceService } from '../services/api-service.service';
 
 @Component({
@@ -8,7 +10,7 @@ import { ApiServiceService } from '../services/api-service.service';
   styleUrls: ['./list-course.component.scss']
 })
 export class ListCourseComponent implements OnInit {
-  constructor(private apiService: ApiServiceService) { }
+  constructor(private apiService: ApiServiceService, private modalService:NgbModal) { }
 
   cursos?: any[];
 
@@ -31,5 +33,10 @@ export class ListCourseComponent implements OnInit {
     }).catch(x=>{
       alert("No se pueden obtener los datos");
     });
+  }
+
+  edit(curso:any){
+    const modalRef = this.modalService.open(FormCursoComponent, { size: 'lg', backdrop: 'static',  });
+    modalRef.componentInstance.curso = curso;
   }
 }
