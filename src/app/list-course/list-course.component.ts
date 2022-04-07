@@ -9,14 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class ListCourseComponent implements OnInit {
   constructor(private http: HttpClient){}
 
-  cursos = [];
+  cursos?:any[];
 
   ngOnInit() {
     this.GetCurso();
   }
 
   GetCurso(){
-    this.cursos = [];
     this.http.get<any>("http://localhost:8000/api/curso").subscribe(data => {
       console.log(data);
       this.cursos = data;
