@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ApiServiceService } from '../services/api-service.service';
 
 @Component({
   selector: 'app-list-course',
@@ -7,18 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-course.component.scss']
 })
 export class ListCourseComponent implements OnInit {
-  constructor(private http: HttpClient){}
+  constructor(private apiService: ApiServiceService) { }
 
-  cursos?:any[];
+  cursos?: any[];
 
   ngOnInit() {
-    this.GetCurso();
-  }
-
-  GetCurso(){
-    this.http.get<any>("http://localhost:8000/api/curso").subscribe(data => {
-      console.log(data);
-      this.cursos = data;
-    })
+    this.cursos = this.apiService.Get("cursos");
   }
 }
