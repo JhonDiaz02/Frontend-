@@ -1,6 +1,7 @@
 <div class="card">
     <div class="card-header">
-        Autor
+        Autor 
+        <button type="button" class="btn btn-danger btn-sm" (click)="list()">Refresh</button>
     </div>
     <div class="p-4">
         <table class="table alingn-middle">
@@ -19,7 +20,7 @@
                     <td scope="row" class="p-2">{{curso.fecha_inicio_curso}}</td>
                     <td scope="row" class="p-2">{{curso.fecha_final_curso}}</td>
                     <td>
-                        <button type="button" class="btn btn-danger btn-sm" (click)="1">Eliminar</button>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="delete(curso.id)">Eliminar</button>
                         <button type="button" class="btn btn-primary btn-sm" (click)="1">Actualizar</button>
                     </td>
                 </tr>

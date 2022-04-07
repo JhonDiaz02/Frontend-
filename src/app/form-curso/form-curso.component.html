@@ -2,21 +2,21 @@
     <div class="card-header">
         Ingresar datos
     </div>
-    <form action="" class="p-4" method="POST">
+    <form action="" class="p-4" [formGroup]="form" (ngSubmit)="save()">
         <div class="mb-3">
             <label class="form-label">Nombre: </label>
-            <input type="text" class="form-control" [formControl]="nombreCurso" autofocus>
+            <input type="text" class="form-control" formControlName="nombre" autofocus>
         </div>
         <div class="mb-4">
             <label class="form-label">Fecha de inicio: </label>
-            <input type="text" class="form-control" [formControl]="fecha_inicio_cursoCurso" autofocus>
+            <input type="date" class="form-control" formControlName="fecha_inicio_curso" autofocus>
         </div>
         <div class="mb-4">
             <label class="form-label">Fecha Final: </label>
-            <input type="text" class="form-control" [formControl]="fecha_final_cursoCurso" autofocus>
+            <input type="date" class="form-control" formControlName="fecha_final_curso" autofocus>
         </div>
         <div class="col-12 text-right d-grid">
-            <button class="btn btn-dark" (click)="1">Enviar</button>
+            <button class="btn btn-dark" type="submit">Enviar</button>
         </div>
     </form>
 </div>

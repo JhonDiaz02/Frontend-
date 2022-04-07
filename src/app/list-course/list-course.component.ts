@@ -13,8 +13,23 @@ export class ListCourseComponent implements OnInit {
   cursos?: any[];
 
   ngOnInit() {
+    this.list();
+  }
+
+  delete(id:any){
+    this.apiService.Delete("curso",id).then(x => {
+      alert("Eliminado");
+      this.list();
+    }).catch(x=>{
+      alert("No se puede Eliminar");
+    });
+  }
+
+  list(){
     this.apiService.Get("curso").then(x => {
       this.cursos = x;
+    }).catch(x=>{
+      alert("No se pueden obtener los datos");
     });
   }
 }

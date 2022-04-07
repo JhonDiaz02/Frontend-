@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiServiceService } from '../services/api-service.service';
 
 @Component({
@@ -9,27 +9,34 @@ import { ApiServiceService } from '../services/api-service.service';
 })
 export class FormCursoComponent implements OnInit {
 
-  nombreCurso = new FormControl;
-  fecha_inicio_cursoCurso = new FormControl;
-  fecha_final_cursoCurso = new FormControl;
+  form!: FormGroup;
 
-  constructor(private apiService:ApiServiceService) { }
+  constructor(private apiService: ApiServiceService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      nombre: ["", Validators.compose([Validators.required])],
+      fecha_inicio_curso: ["", Validators.compose([Validators.required])],
+      fecha_final_curso: ["", Validators.compose([Validators.required])]
+    });
   }
 
-  save(){
-    
-    // this.apiService.Post("cursos",
-    // {
-    //   id:6,
-    //   nombre:this.nombreCurso.value(),
-    //   fecha_inicio_curso:"asdas",
-    //   fecha_final_curso:"asdsa"
-    // }
-    // ).then(x => {
-    //   alert("El curso se creo")
-    // });
+  save() {
+    if (this.form.invalid) {
+      alert("Ingrese todos los campos");
+    } else {
+      this.apiService.Post("curso",
+        {
+          nombre: this.form.controls['nombre'].value,
+          fecha_inicio_curso: this.form.controls['fecha_inicio_curso'].value,
+          fecha_final_curso: this.form.controls['fecha_final_curso'].value
+        }
+      ).then(x => {
+        alert("El curso se creo")
+      }).catch(x => {
+        alert("El curso NO se creo")
+      });
+    }
 
     // this.apiService.Update("cursos",
     // {
