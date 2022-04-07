@@ -18,10 +18,7 @@ export class AppComponent implements OnInit {
     fecha_final_curso: "",
     id: ""
   };
-
-  nombreCurso = new FormControl;
-  fecha_inicio_cursoCurso = new FormControl;
-  fecha_final_cursoCurso = new FormControl;
+  
 
   ngOnInit() {
     this.GetCurso();

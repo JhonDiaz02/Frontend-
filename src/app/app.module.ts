@@ -5,10 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormCursoComponent } from './form-curso/form-curso.component';
+import { ListCourseComponent } from './list-course/list-course.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormCursoComponent,
+    ListCourseComponent
   ],
   imports: [
     BrowserModule,
