@@ -1,0 +1,60 @@
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+      <div class="card">
+        <div class="card-header">
+          Autor
+        </div>
+          <div class="p-4">
+            <table class="table alingn-middle">
+              <thead>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha de inicio</th>
+                <th scope="col">Fecha Final</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </thead>
+              <tbody>
+                <tr *ngFor="curso in cursos">
+                  <td scope="row">{{curso.id}}</td>
+                  <td scope="row" class="p-2">{{curso.nombre}}</td>
+                  <td scope="row" class="p-2">{{curso.fecha_inicio_curso}}</td>
+                  <td scope="row" class="p-2">{{curso.fecha_final_curso}}</td>
+                <td>
+                  <button type="button" class="btn btn-danger btn-sm" (click)="1">Eliminar</button>
+                  <button type="button" class="btn btn-primary btn-sm" (click)="1">Actualizar</button>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          Ingresar datos
+        </div>
+          <form action="" class="p-4" method="POST">
+            <div class="mb-3">
+              <label class="form-label">Nombre: </label>
+              <input type="text" class="form-control" [formControl]="nombreCurso" autofocus>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Fecha de inicio: </label>
+              <input type="text" class="form-control" [formControl]="fecha_inicio_cursoCurso" autofocus>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Fecha Final: </label>
+              <input type="text" class="form-control" [formControl]="fecha_final_cursoCurso" autofocus>
+            </div>
+            <div class="col-12 text-right d-grid">
+              <button class="btn btn-dark" (click)="1">Enviar</button>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div> 
+</div>
