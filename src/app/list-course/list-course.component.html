@@ -13,7 +13,7 @@
                 <th scope="col"></th>
             </thead>
             <tbody>
-                <!-- <tr *ngFor="curso in cursos">
+                <tr *ngFor="let curso of cursos">
                     <td scope="row">{{curso.id}}</td>
                     <td scope="row" class="p-2">{{curso.nombre}}</td>
                     <td scope="row" class="p-2">{{curso.fecha_inicio_curso}}</td>
@@ -22,7 +22,7 @@
                         <button type="button" class="btn btn-danger btn-sm" (click)="1">Eliminar</button>
                         <button type="button" class="btn btn-primary btn-sm" (click)="1">Actualizar</button>
                     </td>
-                </tr> -->
+                </tr>
             </tbody>
         </table>
     </div>
