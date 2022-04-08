@@ -52,23 +52,6 @@ export class FormCursoComponent implements OnInit {
           alert("El curso NO se creo")
         });
     }
-
-    // this.apiService.Update("cursos",
-    // {
-    //   id:6,
-    //   nombre:this.nombreCurso.value(),
-    //   fecha_inicio_curso:"asdas",
-    //   fecha_final_curso:"asdsa"
-    // },
-    // "1"
-    // ).then(x => {
-    //   alert("El curso se actualizo")
-    // });
-
-    // this.apiService.Delete("cursos","1")
-    // .then(x => {
-    //   alert("El curso se actualizo")
-    // });
   }
 
 }

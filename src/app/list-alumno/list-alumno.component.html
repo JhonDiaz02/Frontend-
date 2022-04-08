@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-header">
+        Alumno 
+        <button type="button" class="btn btn-danger btn-sm" (click)="list()">Refresh</button>
+    </div>
+    <div class="p-4">
+        <table class="table alingn-middle">
+            <thead>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Identificación</th>
+                <th scope="col">Correo</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let alumno of alumnos">
+                    <td scope="row">{{alumno.id}}</td>
+                    <td scope="row" class="p-2">{{alumno.nombre}}</td>
+                    <td scope="row" class="p-2">{{alumno.identificacion}}</td>
+                    <td scope="row" class="p-2">{{alumno.correo}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="delete(alumno.id)">Eliminar</button>
+                        <button type="button" class="btn btn-primary btn-sm" (click)="EditAlumno(alumno)">Actualizar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
