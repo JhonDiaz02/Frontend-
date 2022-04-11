@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiServiceService } from '../services/api-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormAlumnoCursoComponent } from '../form-alumno-curso/form-alumno-curso.component';
 
 @Component({
   selector: 'app-form-alumno',
@@ -10,7 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FormAlumnoComponent implements OnInit {
 
-  constructor(private apiService: ApiServiceService, private formBuilder: FormBuilder) { }
+
+  constructor(private apiService: ApiServiceService, private formBuilder: FormBuilder, private modalService:NgbModal) { }
 
   @Input() public alumno: any;
   form!: FormGroup;
@@ -30,9 +33,9 @@ export class FormAlumnoComponent implements OnInit {
       if (this.alumno)
         this.apiService.Update("alumno",
           {
-            nombre: this.form.controls['alumno'].value,
-            fecha_inicio_curso: this.form.controls['identificacion'].value,
-            fecha_final_curso: this.form.controls['correo'].value
+            nombre: this.form.controls['nombre'].value,
+            identificacion: this.form.controls['identificacion'].value,
+            correo: this.form.controls['correo'].value
           },
           this.alumno.id
         ).then(x => {
@@ -45,7 +48,7 @@ export class FormAlumnoComponent implements OnInit {
           {
             nombre: this.form.controls['nombre'].value,
             identificacion: this.form.controls['identificacion'].value,
-            correo: this.form.controls['correo'].value
+            correo: this.form.controls['correo'].value,
           }
         ).then(x => {
           alert("El alumno se creo")
@@ -54,5 +57,11 @@ export class FormAlumnoComponent implements OnInit {
         });
     }
   }
+
+  EditAlumnoCurso(alumno:any){
+    const modalRef = this.modalService.open(FormAlumnoCursoComponent, { size: 'lg', backdrop: 'static',  });
+    modalRef.componentInstance.alumno = alumno;
+  }
+
 
 }

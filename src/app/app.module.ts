@@ -13,6 +13,8 @@ import { FormAlumnoComponent } from './form-alumno/form-alumno.component';
 import { ListAlumnoComponent } from './list-alumno/list-alumno.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+import { FormAlumnoCursoComponent } from './form-alumno-curso/form-alumno-curso.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ToastrModule } from 'ngx-toastr';
     FormCursoComponent,
     ListCourseComponent,
     FormAlumnoComponent,
-    ListAlumnoComponent
+    ListAlumnoComponent,
+    FormAlumnoCursoComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    ToastrModule
+    ToastrModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

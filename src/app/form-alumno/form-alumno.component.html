@@ -15,8 +15,11 @@
             <label class="form-label">Correo: </label>
             <input type="text" class="form-control" formControlName="correo" autofocus>
         </div>
-        <div class="col-12 text-right d-grid">
-            <button class="btn btn-dark" type="submit">Enviar</button>
+        <div class="mb-4 d-grid">
+            <button type="button" class="btn btn-primary btn-sm" (click)="EditAlumnoCurso(alumno)">Curso</button>
         </div>
-    </form>
+            <div class="col-12 text-right d-grid">
+                <button class="btn btn-dark" type="submit">Enviar</button>
+            </div>
+        </form>
 </div>

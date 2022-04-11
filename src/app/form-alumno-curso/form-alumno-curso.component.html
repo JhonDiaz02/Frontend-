@@ -1,0 +1,25 @@
+
+<div class="card">
+    <div class="card-header">
+        Curso en que se encuentra
+    </div>
+    <form action="" class="p-4" [formGroup]="form" (ngSubmit)="save()">
+    <div class="mb-4">
+        <select type="bigint" class="mb-4" formControlName="alumno_id">               
+            <option *ngFor="let alumno of alumnos" value={{alumno.id}} >
+            {{alumno.nombre}}
+                </option>
+        </select>
+    </div>
+    <div>
+        <select type="bigint" class="mb-4" formControlName="curso_id">               
+            <option *ngFor="let curso of cursos" value={{curso.id}} >
+            {{curso.nombre}}
+                </option>
+        </select>
+    </div>
+    <div class="col-12 text-right">
+        <button class="btn btn-dark" type="submit">Enviar</button>
+    </div>
+    </form>
+</div>>    

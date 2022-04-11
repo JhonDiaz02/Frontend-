@@ -18,8 +18,9 @@ export class FormCursoComponent implements OnInit {
     this.form = this.formBuilder.group({
       nombre: [this.curso ? this.curso.nombre : "", Validators.compose([Validators.required])],
       fecha_inicio_curso: [this.curso ? this.curso.fecha_inicio_curso : "", Validators.compose([Validators.required])],
-      fecha_final_curso: [this.curso ? this.curso.final_curso : "", Validators.compose([Validators.required])]
+      fecha_final_curso: [this.curso ? this.curso.fecha_final_curso : "", Validators.compose([Validators.required])]
     });
+    console.log(this.form);
   }
 
   save() {
