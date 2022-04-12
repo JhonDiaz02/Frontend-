@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiServiceService } from '../services/api-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-form-curso',
@@ -12,7 +13,7 @@ export class FormCursoComponent implements OnInit {
   @Input() public curso: any;
   form!: FormGroup;
 
-  constructor(private apiService: ApiServiceService, private formBuilder: FormBuilder) { }
+  constructor(private apiService: ApiServiceService, private formBuilder: FormBuilder, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -25,7 +26,7 @@ export class FormCursoComponent implements OnInit {
 
   save() {
     if (this.form.invalid) {
-      alert("Ingrese todos los campos");
+      this.toastr.warning("Ingrese todos los campos");
     } else {
       if (this.curso)
         this.apiService.Update("curso",
@@ -36,9 +37,9 @@ export class FormCursoComponent implements OnInit {
           },
           this.curso.id
         ).then(x => {
-          alert("El curso se actualizo")
+          this.toastr.success("El curso se actualizo")
         }).catch(x => {
-          alert("El curso NO se actualizo")
+          this.toastr.error("El curso NO se actualizo")
         });
       else
         this.apiService.Post("curso",
@@ -48,9 +49,9 @@ export class FormCursoComponent implements OnInit {
             fecha_final_curso: this.form.controls['fecha_final_curso'].value
           }
         ).then(x => {
-          alert("El curso se creo")
+          this.toastr.success("El curso se creo")
         }).catch(x => {
-          alert("El curso NO se creo")
+          this.toastr.error("El curso NO se creo")
         });
     }
   }

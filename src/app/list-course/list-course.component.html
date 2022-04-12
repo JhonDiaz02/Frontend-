@@ -1,7 +1,9 @@
-<div class="card">
-    <div class="card-header">
-        Curso 
-        <button type="button" class="btn btn-danger btn-sm" (click)="list()">Refresh</button>
+<div class="card border-dark mb-3">
+    <div class="card-header fs-4 bg-transparent border-dark mb-3">
+        Cursos
+    </div>
+    <div class="card-header bg-transparent border-light d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-danger btn-sm " (click)="list()">Refrescar lista</button>
     </div>
     <div class="p-4">
         <table class="table alingn-middle">
@@ -19,7 +21,7 @@
                     <td scope="row" class="p-2">{{curso.nombre}}</td>
                     <td scope="row" class="p-2">{{curso.fecha_inicio_curso}}</td>
                     <td scope="row" class="p-2">{{curso.fecha_final_curso}}</td>
-                    <td>
+                    <td class="d-md-flex justify-content-md-end">
                         <button type="button" class="btn btn-danger btn-sm" (click)="delete(curso.id)">Eliminar</button>
                         <button type="button" class="btn btn-primary btn-sm" (click)="EditCurso(curso)">Actualizar</button>
                     </td>

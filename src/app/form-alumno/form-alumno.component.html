@@ -1,5 +1,5 @@
-<div class="card">
-    <div class="card-header">
+<div class="card border-dark">
+    <div class="card-header border-dark">
         Ingresar datos
     </div>
     <form action="" class="p-4" [formGroup]="form" (ngSubmit)="save()">
@@ -14,9 +14,6 @@
         <div class="mb-4">
             <label class="form-label">Correo: </label>
             <input type="text" class="form-control" formControlName="correo" autofocus>
-        </div>
-        <div class="mb-4 d-grid">
-            <button type="button" class="btn btn-primary btn-sm" (click)="EditAlumnoCurso(alumno)">Curso</button>
         </div>
             <div class="col-12 text-right d-grid">
                 <button class="btn btn-dark" type="submit">Enviar</button>

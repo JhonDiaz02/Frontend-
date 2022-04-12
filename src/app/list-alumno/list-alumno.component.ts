@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormAlumnoCursoComponent } from '../form-alumno-curso/form-alumno-curso.component';
 import { FormAlumnoComponent } from '../form-alumno/form-alumno.component';
 import { ApiServiceService } from '../services/api-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-alumno',
@@ -10,7 +12,7 @@ import { ApiServiceService } from '../services/api-service.service';
 })
 export class ListAlumnoComponent implements OnInit {
 
-  constructor(private apiService: ApiServiceService, private modalService:NgbModal) { }
+  constructor(private apiService: ApiServiceService, private modalService:NgbModal, private toastr: ToastrService) { }
 
   alumnos? : any[];
 
@@ -21,23 +23,31 @@ export class ListAlumnoComponent implements OnInit {
   list(){
     this.apiService.Get("alumno").then(x => {
       this.alumnos = x;
+      this.toastr.success("Alumnos refrescados");
     }).catch(x=>{
-      alert("No se pueden obtener los datos");
+      this.toastr.error("No se pueden obtener los datos");
     });
   }
+  
 
   delete(id:any){
     this.apiService.Delete("alumno",id).then(x => {
-      alert("Eliminado");
+      this.toastr.success("Eliminado");
       this.list();
     }).catch(x=>{
-      alert("No se puede Eliminar");
+      this.toastr.error("No se puede Eliminar");
     });
   }
 
   EditAlumno(alumno:any){
     const modalRef = this.modalService.open(FormAlumnoComponent, { size: 'lg', backdrop: 'static',  });
     modalRef.componentInstance.alumno = alumno;
+  }
+
+  EditAlumnoCurso(alumno:any){
+    const modalRef = this.modalService.open(FormAlumnoCursoComponent, { size: 'lg', backdrop: 'static',  });
+    modalRef.componentInstance.alumno = alumno;
+    console.log(alumno);
   }
 
 }

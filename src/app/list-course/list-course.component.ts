@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormCursoComponent } from '../form-curso/form-curso.component';
 import { ApiServiceService } from '../services/api-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-course',
@@ -10,7 +11,7 @@ import { ApiServiceService } from '../services/api-service.service';
   styleUrls: ['./list-course.component.scss']
 })
 export class ListCourseComponent implements OnInit {
-  constructor(private apiService: ApiServiceService, private modalService:NgbModal) { }
+  constructor(private apiService: ApiServiceService, private modalService:NgbModal, private toastr: ToastrService) { }
 
   cursos?: any[];
 
@@ -20,18 +21,19 @@ export class ListCourseComponent implements OnInit {
 
   delete(id:any){
     this.apiService.Delete("curso",id).then(x => {
-      alert("Eliminado");
+      this.toastr.success("Eliminado");
       this.list();
     }).catch(x=>{
-      alert("No se puede Eliminar");
+      this.toastr.error("No se puede Eliminar");
     });
   }
 
   list(){
     this.apiService.Get("curso").then(x => {
       this.cursos = x;
+      this.toastr.success("Cursos refrescados");
     }).catch(x=>{
-      alert("No se pueden obtener los datos");
+      this.toastr.error("No se pueden obtener los datos");
     });
   }
 

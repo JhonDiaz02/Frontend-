@@ -32,7 +32,7 @@ import { FormAlumnoCursoComponent } from './form-alumno-curso/form-alumno-curso.
     ReactiveFormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    ToastrModule,
+    ToastrModule.forRoot(),
     FormsModule
   ],
   providers: [],

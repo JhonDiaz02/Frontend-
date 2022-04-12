@@ -13,7 +13,7 @@ import { FormAlumnoCursoComponent } from '../form-alumno-curso/form-alumno-curso
 export class FormAlumnoComponent implements OnInit {
 
 
-  constructor(private apiService: ApiServiceService, private formBuilder: FormBuilder, private modalService:NgbModal) { }
+  constructor(private apiService: ApiServiceService, private formBuilder: FormBuilder, private modalService:NgbModal, private toastr: ToastrService) { }
 
   @Input() public alumno: any;
   form!: FormGroup;
@@ -28,7 +28,7 @@ export class FormAlumnoComponent implements OnInit {
 
   save() {
     if (this.form.invalid) {
-      alert("Ingrese todos los campos");
+      this.toastr.warning("Ingrese todos los campos");
     } else {
       if (this.alumno)
         this.apiService.Update("alumno",
@@ -39,9 +39,9 @@ export class FormAlumnoComponent implements OnInit {
           },
           this.alumno.id
         ).then(x => {
-          alert("El alumno se actualizo")
+          this.toastr.success("El alumno se actualizo")
         }).catch(x => {
-          alert("El alumno NO se actualizo")
+          this.toastr.error("El alumno NO se actualizo")
         });
       else
         this.apiService.Post("alumno",
@@ -51,9 +51,9 @@ export class FormAlumnoComponent implements OnInit {
             correo: this.form.controls['correo'].value,
           }
         ).then(x => {
-          alert("El alumno se creo")
+          this.toastr.success("El alumno se creo")
         }).catch(x => {
-          alert("El alumno NO se creo")
+          this.toastr.error("El alumno NO se creo")
         });
     }
   }

@@ -1,18 +1,58 @@
+<div class="card border-dark">
+    <div class="card-header border-dark">
+        Alumno
+    </div>
+    <form action="" class="p-3" [formGroup]="form" (ngSubmit)="save()">
+    <div>
+        <select type="bigint" class="mb-3 form-select" aria-label="Default select example" formControlName="alumno_id"> 
+            <option *ngFor="let alumno of alumnos" value={{alumno.id}} >
+            {{alumno.nombre}}
+        </select>
+    </div>
+    <div class="card-header">
+        Curso
+    </div>
+    <div class="p-3">
+            <thead></thead>
+                    <div>
+                        <select type="bigint" class="mb-3 form-select" aria-label="Default select example" formControlName="curso_id"> 
+                            <option *ngFor="let curso of cursos" value={{curso.id}} >
+                            {{curso.nombre}}
+                        </select>
+                    </div>
+        <div class="text-right">
+            <button class="btn btn-primary btn-sms" type="submit">Enviar</button>
+        </div>
+    </div>
+    </form>
+</div>
+    
 
+
+
+
+
+
+
+
+
+<!-- 
 <div class="card">
     <div class="card-header">
         Curso en que se encuentra
     </div>
     <form action="" class="p-4" [formGroup]="form" (ngSubmit)="save()">
     <div class="mb-4">
-        <select type="bigint" class="mb-4" formControlName="alumno_id">               
+        <select type="bigint" class="mb-4 form-select" aria-label="Default select example" formControlName="alumno_id"> 
+            <option selected>Seleccionar...</option>              
             <option *ngFor="let alumno of alumnos" value={{alumno.id}} >
             {{alumno.nombre}}
                 </option>
         </select>
     </div>
     <div>
-        <select type="bigint" class="mb-4" formControlName="curso_id">               
+        <select type="bigint" class="mb-4 form-select" formControlName="curso_id"> 
+            <option selected>Seleccionar...</option>              
             <option *ngFor="let curso of cursos" value={{curso.id}} >
             {{curso.nombre}}
                 </option>
@@ -22,4 +62,4 @@
         <button class="btn btn-dark" type="submit">Enviar</button>
     </div>
     </form>
-</div>>    
+</div>>     -->
