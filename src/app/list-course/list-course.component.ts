@@ -40,5 +40,6 @@ export class ListCourseComponent implements OnInit {
   EditCurso(curso:any){
     const modalRef = this.modalService.open(FormCursoComponent, { size: 'lg', backdrop: 'static',  });
     modalRef.componentInstance.curso = curso;
+    modalRef.componentInstance.modal = this.modalService;
   }
 }

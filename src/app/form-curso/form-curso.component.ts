@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiServiceService } from '../services/api-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-form-curso',
@@ -11,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class FormCursoComponent implements OnInit {
 
   @Input() public curso: any;
+  @Input() public modal: NgbModal | undefined;
   form!: FormGroup;
 
   constructor(private apiService: ApiServiceService, private formBuilder: FormBuilder, private toastr: ToastrService) { }
@@ -38,6 +40,7 @@ export class FormCursoComponent implements OnInit {
           this.curso.id
         ).then(x => {
           this.toastr.success("El curso se actualizo")
+          this.closeModal();
         }).catch(x => {
           this.toastr.error("El curso NO se actualizo")
         });
@@ -54,6 +57,10 @@ export class FormCursoComponent implements OnInit {
           this.toastr.error("El curso NO se creo")
         });
     }
+  }
+
+  closeModal(){
+    this.modal?.dismissAll();
   }
 
 }

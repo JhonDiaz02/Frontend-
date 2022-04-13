@@ -7,36 +7,36 @@
         <button type="button" class="btn btn-danger btn-sm " (click)="list()">Refrescar lista</button>
     </div>
     <div class="p-4">
-        <table class="table alingn-middle">
-            <thead>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Identificación</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Curso</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </thead>
-            <tbody>
-                <tr *ngFor="let alumno of alumnos">
-                    <td scope="row">{{alumno.id}}</td>
-                    <td scope="row" class="p-2">{{alumno.nombre}}</td>
-                    <td scope="row" class="p-2">{{alumno.identificacion}}</td>
-                    <td scope="row" class="p-2">{{alumno.correo}}</td>
-                    <td>
-                        <table>
-                            <tr *ngFor="let curso of alumno.curso">
-                                <td>{{curso.nombre}}</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td class=" d-md-flex justify-content-md-end">
-                        <button type="button" class="btn btn-danger btn-sm" (click)="delete(alumno.id)">Eliminar</button>
-                        <button type="button" class="btn btn-primary btn-sm" (click)="EditAlumno(alumno)">Actualizar</button>
-                        <button type="button" class="btn btn-success btn-sm " (click)="EditAlumnoCurso(alumno.id)">Agregar curso</button>
-                    </td>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table alingn-middle">
+                <thead>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Identificación</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let alumno of alumnos">
+                        <td scope="row">{{alumno.id}}</td>
+                        <td scope="row" class="p-2">{{alumno.nombre}}</td>
+                        <td scope="row" class="p-2">{{alumno.identificacion}}</td>
+                        <td scope="row" class="p-2">{{alumno.correo}}</td>
+                        <td>
+                            <ul>
+                                <li *ngFor="let curso of alumno.cursos">{{curso.curso.nombre}} <button type="button" class="close" data-dismiss="modal" (click)="deleteCourse(curso)">&times;</button></li>
+                            </ul>
+                        </td>
+                        <td class=" d-md-flex justify-content-md-end">
+                            <button type="button" class="btn btn-danger btn-sm" (click)="delete(alumno.id)">Eliminar</button>
+                            <button type="button" class="btn btn-primary btn-sm" (click)="EditAlumno(alumno)">Actualizar</button>
+                            <button type="button" class="btn btn-success btn-sm " (click)="EditAlumnoCurso(alumno)">Agregar curso</button>
+                        </td>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

@@ -50,4 +50,13 @@ export class ListAlumnoComponent implements OnInit {
     console.log(alumno);
   }
 
+  deleteCourse(curso:any){
+    this.apiService.Delete("alumno_curso",curso.id).then(x => {
+      this.toastr.success("Eliminado");
+      this.list();
+    }).catch(x=>{
+      this.toastr.error("No se puede Eliminar");
+    });
+  }
+
 }

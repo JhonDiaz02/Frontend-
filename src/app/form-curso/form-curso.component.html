@@ -1,6 +1,7 @@
 <div class="card border-dark">
     <div class="card-header border-dark">
-        Ingresar datos
+        <h3 *ngIf="!curso">Ingresar datos</h3>
+        <h3 *ngIf="curso">Actualizar datos <button type="button" class="close" data-dismiss="modal" (click)="closeModal()">&times;</button></h3>
     </div>
     <form action="" class="p-4" [formGroup]="form" (ngSubmit)="save()">
         <div class="mb-3">
