@@ -1,32 +1,37 @@
 <div class="card border-dark mb-3">
-    <div class="card-header fs-4 bg-transparent border-dark mb-3">
-        Cursos
+    <div class="modal-header fs-4 bg-transparent border-dark mb-3">
+        <h3 class="modal-text">Cursos</h3>
     </div>
     <div class="card-header bg-transparent border-light d-grid gap-2 d-md-flex justify-content-md-end">
         <button type="button" class="btn btn-danger btn-sm " (click)="list()">Refrescar lista</button>
     </div>
     <div class="p-4">
-        <table class="table alingn-middle">
-            <thead>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Fecha de inicio</th>
-                <th scope="col">Fecha Final</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </thead>
-            <tbody>
-                <tr *ngFor="let curso of cursos">
-                    <td scope="row">{{curso.id}}</td>
-                    <td scope="row" class="p-2">{{curso.nombre}}</td>
-                    <td scope="row" class="p-2">{{curso.fecha_inicio_curso}}</td>
-                    <td scope="row" class="p-2">{{curso.fecha_final_curso}}</td>
-                    <td class="d-md-flex justify-content-md-end">
-                        <button type="button" class="btn btn-danger btn-sm" (click)="delete(curso.id)">Eliminar</button>
-                        <button type="button" class="btn btn-primary btn-sm" (click)="EditCurso(curso)">Actualizar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-bordered alingn-middle">
+                <thead>
+                <tr> 
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha de inicio</th>
+                    <th scope="col">Fecha Final</th>
+                    <th scope="col" colspan="2">Acciones</th>
+                <tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let curso of cursos">
+                        <td scope="row">{{curso.id}}</td>
+                        <td scope="row" class="p-2">{{curso.nombre}}</td>
+                        <td scope="row" class="p-2">{{curso.fecha_inicio_curso}}</td>
+                        <td scope="row" class="p-2">{{curso.fecha_final_curso}}</td>
+                        <td >
+                            <button  type="button" class="btn btn-danger btn-sm" (click)="delete(curso.id)">Eliminar</button>
+                        </td>
+                        <td >
+                            <button  type="button" class="btn btn-primary btn-sm" (click)="EditCurso(curso)">Actualizar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

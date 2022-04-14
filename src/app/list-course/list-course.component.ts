@@ -31,7 +31,6 @@ export class ListCourseComponent implements OnInit {
   list(){
     this.apiService.Get("curso").then(x => {
       this.cursos = x;
-      this.toastr.success("Cursos refrescados");
     }).catch(x=>{
       this.toastr.error("No se pueden obtener los datos");
     });

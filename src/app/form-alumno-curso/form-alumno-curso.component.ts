@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiServiceService } from '../services/api-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-form-alumno-curso',
@@ -11,13 +12,12 @@ import { ToastrService } from 'ngx-toastr';
 export class FormAlumnoCursoComponent implements OnInit {
 
   @Input() public alumno: any;
+  @Input() public modal: NgbModal | undefined;
   form!: FormGroup;
 
   constructor(private apiService: ApiServiceService, private formBuilder: FormBuilder, private toastr: ToastrService) { }
 
   cursos?: any[];
-
-  // alumnos?: any[];
 
 
   ngOnInit(): void {
@@ -26,7 +26,6 @@ export class FormAlumnoCursoComponent implements OnInit {
       curso_id: ["", Validators.compose([Validators.required])]
     });
     this.list();
-    // this.listAlumno();
   }
 
   save() {
@@ -61,6 +60,10 @@ export class FormAlumnoCursoComponent implements OnInit {
     }).catch(x => {
       this.toastr.error("No se puede Eliminar");
     });
+  }
+
+  closeModal(){
+    this.modal?.dismissAll();
   }
 
 }

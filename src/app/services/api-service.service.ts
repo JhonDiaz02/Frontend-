@@ -42,4 +42,13 @@ export class ApiServiceService {
         return Promise.resolve(<any>x);
       });
   }
+
+  Option(entity: string, id:string): Promise<any> {
+    return this.http.head(`${environment.end_point}${entity}/${id}`)
+      .toPromise()
+      .then(x => {
+        return Promise.resolve(<any>x);
+      });
+  }  
+
 }

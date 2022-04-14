@@ -1,6 +1,10 @@
 <div class="card border-dark">
-    <div class="card-header border-dark">
-        Ingresar datos
+    <div class="modal-header border-dark">
+        <h3 *ngIf="!alumno" class=" modal-title">Ingresar datos</h3>
+        <h3 *ngIf="alumno" class=" modal-title">Actualizar datos</h3>
+        <div *ngIf="alumno">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close" (click)="closeModal()"></button>
+        </div>
     </div>
     <form action="" class="p-4" [formGroup]="form" (ngSubmit)="save()">
         <div class="mb-3">
@@ -15,7 +19,25 @@
             <label class="form-label">Correo: </label>
             <input type="text" class="form-control" formControlName="correo" autofocus>
         </div>
-            <div class="col-12 text-right d-grid">
+        <select type="bigint" class="mb-3 form-select" aria-label="Default select example" (change)="(Departament($event.target))">
+            <option selected>Seleccionar pais...</option>
+            <option *ngFor="let pais of paises" value={{pais.id}}>
+                {{pais.nombre}}
+            </option>
+        </select>
+        <select type="bigint" class="mb-3 form-select" aria-label="Default select example">
+            <option selected>Seleccionar departamento...</option>
+            <option *ngFor="let departamentos of departamento" value={{departamentos.id}}>
+                {{departamentos.nombre}}
+            </option>
+        </select>
+        <select type="bigint" class="mb-3 form-select" aria-label="Default select example">
+            <option selected>Seleccionar ciudad...</option>
+            <option *ngFor="let ciudad of ciudades" value={{ciudad.id}}>
+                {{ciudad.nombre}}
+            </option>
+        </select>
+        <div class="col-12 text-right d-grid">
                 <button class="btn btn-dark" type="submit">Enviar</button>
             </div>
         </form>

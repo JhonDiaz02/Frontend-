@@ -16,14 +16,21 @@ export class FormAlumnoComponent implements OnInit {
   constructor(private apiService: ApiServiceService, private formBuilder: FormBuilder, private modalService:NgbModal, private toastr: ToastrService) { }
 
   @Input() public alumno: any;
+  @Input() public modal: NgbModal | undefined;
   form!: FormGroup;
 
+  paises? :any[];
+  departamento? :any[];
+  ciudades? :any[];
+  
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       nombre: [this.alumno ? this.alumno.nombre : "", Validators.compose([Validators.required])],
       identificacion: [this.alumno ? this.alumno.identificacion : "", Validators.compose([Validators.required])],
       correo: [this.alumno ? this.alumno.correo : "", Validators.compose([Validators.required])]
     });
+    this.listCountry();
+    this.listCity();
   }
 
   save() {
@@ -63,5 +70,34 @@ export class FormAlumnoComponent implements OnInit {
     modalRef.componentInstance.alumno = alumno;
   }
 
+  closeModal(){
+    this.modal?.dismissAll();
+  }
 
+  listCountry(){
+    this.apiService.Get("pais").then(x => {
+      this.paises = x;
+    }).catch(x=>{
+      this.toastr.error("No se pueden obtener los datos");
+    });
+  }
+
+  Departament(id : any) {
+    this.apiService.Option("pais", id.value).then(x => {
+      this.departamento = x;
+      console.log(this.departamento);
+    }).catch(x=>{
+      this.toastr.error("No se pueden obtener los datos");
+    });
+  }
+  
+  listCity(){
+    this.apiService.Get("ciudad").then(x => {
+      this.ciudades = x;
+    }).catch(x=>{
+      this.toastr.error("No se pueden obtener los datos");
+    });
+  }
+  
+  
 }

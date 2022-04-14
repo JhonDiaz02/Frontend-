@@ -23,7 +23,6 @@ export class ListAlumnoComponent implements OnInit {
   list(){
     this.apiService.Get("alumno").then(x => {
       this.alumnos = x;
-      this.toastr.success("Alumnos refrescados");
     }).catch(x=>{
       this.toastr.error("No se pueden obtener los datos");
     });
@@ -42,12 +41,14 @@ export class ListAlumnoComponent implements OnInit {
   EditAlumno(alumno:any){
     const modalRef = this.modalService.open(FormAlumnoComponent, { size: 'lg', backdrop: 'static',  });
     modalRef.componentInstance.alumno = alumno;
+    modalRef.componentInstance.modal = this.modalService;
   }
 
   EditAlumnoCurso(alumno:any){
     const modalRef = this.modalService.open(FormAlumnoCursoComponent, { size: 'lg', backdrop: 'static',  });
     modalRef.componentInstance.alumno = alumno;
-    console.log(alumno);
+    modalRef.componentInstance.modal = this.modalService;
+
   }
 
   deleteCourse(curso:any){
