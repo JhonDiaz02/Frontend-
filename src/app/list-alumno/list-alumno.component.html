@@ -16,6 +16,7 @@
                     <th scope="col">Identificación</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Curso</th>
+                    <th scope="col">Ciudad</th>
                     <th scope="col" colspan="3">Acciones</th>
                 </tr>
                 </thead>
@@ -28,6 +29,11 @@
                         <td>
                             <ul>
                                 <li *ngFor="let curso of alumno.cursos">{{curso.curso.nombre}} <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="deleteCourse(curso)"></button></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li *ngFor="let ciudadable of alumno.ciudadable">{{ciudadable.ciudad.nombre}} <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="deleteCourse(ciudadable)"></button></li>
                             </ul>
                         </td>
                         <td class=" d-md-flex justify-content-md-end">

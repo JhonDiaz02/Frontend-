@@ -20,17 +20,17 @@ export class FormAlumnoComponent implements OnInit {
   form!: FormGroup;
 
   paises? :any[];
-  departamento? :any[];
-  ciudades? :any[];
+  departamento :any[]=[];
+  ciudades :any[]=[];
   
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       nombre: [this.alumno ? this.alumno.nombre : "", Validators.compose([Validators.required])],
       identificacion: [this.alumno ? this.alumno.identificacion : "", Validators.compose([Validators.required])],
-      correo: [this.alumno ? this.alumno.correo : "", Validators.compose([Validators.required])]
+      correo: [this.alumno ? this.alumno.correo : "", Validators.compose([Validators.required])],
+      ciudad_id: [this.alumno ? this.alumno.ciudad_id : "", Validators.compose([Validators.required])]
     });
     this.listCountry();
-    this.listCity();
   }
 
   save() {
@@ -42,7 +42,8 @@ export class FormAlumnoComponent implements OnInit {
           {
             nombre: this.form.controls['nombre'].value,
             identificacion: this.form.controls['identificacion'].value,
-            correo: this.form.controls['correo'].value
+            correo: this.form.controls['correo'].value,
+            ciudad_id: this.form.controls['ciudad_id'].value
           },
           this.alumno.id
         ).then(x => {
@@ -56,6 +57,7 @@ export class FormAlumnoComponent implements OnInit {
             nombre: this.form.controls['nombre'].value,
             identificacion: this.form.controls['identificacion'].value,
             correo: this.form.controls['correo'].value,
+            ciudad_id: this.form.controls['ciudad_id'].value
           }
         ).then(x => {
           this.toastr.success("El alumno se creo")
@@ -83,21 +85,22 @@ export class FormAlumnoComponent implements OnInit {
   }
 
   Departament(id : any) {
-    this.apiService.Option("pais", id.value).then(x => {
-      this.departamento = x;
+    this.apiService.Departament("pais", id.value).then(x => {
+      this.departamento = x.departamentos;
       console.log(this.departamento);
     }).catch(x=>{
       this.toastr.error("No se pueden obtener los datos");
     });
+    this.ciudades = [];
   }
-  
-  listCity(){
-    this.apiService.Get("ciudad").then(x => {
-      this.ciudades = x;
+
+  City(id : any) {
+    this.apiService.City("ciudad", id.value).then(x => {
+      this.ciudades = x.ciudades;
+      console.log(this.ciudades);
     }).catch(x=>{
       this.toastr.error("No se pueden obtener los datos");
     });
   }
-  
   
 }

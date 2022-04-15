@@ -25,13 +25,13 @@
                 {{pais.nombre}}
             </option>
         </select>
-        <select type="bigint" class="mb-3 form-select" aria-label="Default select example">
+        <select *ngIf="departamento.length > 0" type="bigint" class="mb-3 form-select" aria-label="Default select example" (change)="City($event.target)">
             <option selected>Seleccionar departamento...</option>
             <option *ngFor="let departamentos of departamento" value={{departamentos.id}}>
                 {{departamentos.nombre}}
             </option>
         </select>
-        <select type="bigint" class="mb-3 form-select" aria-label="Default select example">
+        <select *ngIf="ciudades.length > 0" type="bigint" class="mb-3 form-select" aria-label="Default select example" formControlName="ciudad_id">
             <option selected>Seleccionar ciudad...</option>
             <option *ngFor="let ciudad of ciudades" value={{ciudad.id}}>
                 {{ciudad.nombre}}

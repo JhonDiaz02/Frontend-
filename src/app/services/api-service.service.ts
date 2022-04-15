@@ -43,7 +43,16 @@ export class ApiServiceService {
       });
   }
 
-  Option(entity: string, id:string): Promise<any> {
+  Departament(entity: string, id:string): Promise<any> {
+    return this.http.get(`${environment.end_point}${entity}/${id}`)
+      .toPromise()
+      .then(x => {
+        console.log(x);
+        return Promise.resolve(<any>x);
+      });
+  }  
+
+  City(entity: string, id:string): Promise<any> {
     return this.http.get(`${environment.end_point}${entity}/${id}`)
       .toPromise()
       .then(x => {
