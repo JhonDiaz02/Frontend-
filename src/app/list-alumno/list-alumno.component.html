@@ -32,9 +32,7 @@
                             </ul>
                         </td>
                         <td>
-                            <ul>
-                                <li *ngFor="let ciudadable of alumno.ciudadable">{{ciudadable.ciudad.nombre}} <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="deleteCourse(ciudadable)"></button></li>
-                            </ul>
+                            {{alumno.ciudad.nombre}}-{{alumno.ciudad.depto.nombre}}-{{alumno.ciudad.depto.pais.nombre}}
                         </td>
                         <td class=" d-md-flex justify-content-md-end">
                             <button type="button" class="btn btn-danger btn-sm" (click)="delete(alumno.id)">Eliminar</button>
