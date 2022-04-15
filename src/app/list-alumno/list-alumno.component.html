@@ -1,51 +1,55 @@
-
 <div class="card border-dark mb-3">
     <div class="modal-header fs-4 bg-transparent border-dark mb-3">
-        <h3 class="modal-text">Alumnos</h3> 
-    </div>    
+        <h3 class="modal-text">Alumnos</h3>
+    </div>
     <div class="card-header bg-transparent border-light d-grid gap-2 d-md-flex justify-content-md-end">
         <button type="button" class="btn btn-danger btn-sm " (click)="list()">Refrescar lista</button>
+        <a routerLink="/add-alumno" class="btn btn-success btn-sm ">Nuevo</a>
     </div>
     <div class="p-4">
         <div class="table-responsive">
             <table class="table table-bordered alingn-middle">
                 <thead>
-                <tr >
-                    <th  scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Identificación</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Curso</th>
-                    <th scope="col">Ciudad</th>
-                    <th scope="col" colspan="3">Acciones</th>
-                </tr>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Identificación</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Curso</th>
+                        <th scope="col">Ciudad</th>
+                        <th scope="col" colspan="3">Acciones</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let alumno of alumnos">
                         <td scope="row">{{alumno.id}}</td>
-                        <td  class="p-2">{{alumno.nombre}}</td>
-                        <td  class="p-2">{{alumno.identificacion}}</td>
-                        <td  class="p-2">{{alumno.correo}}</td>
+                        <td class="p-2">{{alumno.nombre}}</td>
+                        <td class="p-2">{{alumno.identificacion}}</td>
+                        <td class="p-2">{{alumno.correo}}</td>
                         <td>
                             <ul>
-                                <li *ngFor="let curso of alumno.cursos">{{curso.curso.nombre}} <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="deleteCourse(curso)"></button></li>
+                                <li *ngFor="let curso of alumno.cursos">{{curso.curso.nombre}} <button type="button"
+                                        class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                        (click)="deleteCourse(curso)"></button></li>
                             </ul>
                         </td>
                         <td>
                             {{alumno.ciudad.nombre}}-{{alumno.ciudad.depto.nombre}}-{{alumno.ciudad.depto.pais.nombre}}
                         </td>
                         <td class=" d-md-flex justify-content-md-end">
-                            <button type="button" class="btn btn-danger btn-sm" (click)="delete(alumno.id)">Eliminar</button>
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="delete(alumno.id)">Eliminar</button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm" (click)="EditAlumno(alumno)">Actualizar</button>
+                            <button type="button" class="btn btn-primary btn-sm"
+                                (click)="EditAlumno(alumno)">Actualizar</button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-success btn-sm " (click)="EditAlumnoCurso(alumno)">Agregar</button>
+                            <button type="button" class="btn btn-success btn-sm "
+                                (click)="EditAlumnoCurso(alumno)">Agregar</button>
                         </td>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-

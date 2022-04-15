@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { FormAlumnoCursoComponent } from './form-alumno-curso/form-alumno-curso.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormAlumnoCursoComponent } from './form-alumno-curso/form-alumno-curso.
     ListCourseComponent,
     FormAlumnoComponent,
     ListAlumnoComponent,
-    FormAlumnoCursoComponent
+    FormAlumnoCursoComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
